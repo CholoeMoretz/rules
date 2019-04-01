@@ -342,3 +342,4 @@ postagger.release()
 segmentor.release()  # 释放模型
 parser.release()
 print('test')
+print('21313131')
