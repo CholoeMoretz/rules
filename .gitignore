@@ -1,0 +1,7 @@
+/.idea/
+/.DS_Store
+/__pycache__/
+/ltp_data_*/
+*.txt
+!README.txt
+/venv/
