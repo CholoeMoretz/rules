@@ -59,7 +59,7 @@ def rule_1(sentence, remove_word_dict):
     pattern_prob=re.compile(r'如果|可能|也许|也许会|目前|暂缓|尚且|不确定|是否|恐怕|或许|难以')
     match_prob=pattern_prob.search(sentence)
     if match_prob == None:
-        pattern = re.compile(r"(因|因为|由|由于|通过|因而|出于)(.+)(因此|导致|引起|使得|造成|引发|招致|致使|让)(.+)$")
+        pattern = re.compile(r"(因|因为|由|由于|通过|因而|出于)(.+)(造就|因此|导致|引起|使得|造成|引发|招致|致使|让)(.+)$")
         match = pattern.search(sentence)
         if match and match.lastindex >= 3:
             cause = match.group(2)
@@ -76,7 +76,7 @@ def rule_1(sentence, remove_word_dict):
                 is_done = True
                 rule='rule1'
     if match_prob != None:
-        pattern = re.compile(r"(因|因为|由|由于|通过|因而|出于)(.+)(因此|导致|引起|使得|造成|引发|招致|致使|让)(.+)$")
+        pattern = re.compile(r"(因|因为|由|由于|通过|因而|出于)(.+)(造就|因此|导致|引起|使得|造成|引发|招致|致使|让)(.+)$")
         match = pattern.search(sentence)
         if match and match.lastindex >= 3:
             cause = match.group(2)
@@ -244,7 +244,7 @@ def rule_5(sentence, remove_word_dict):
     pattern_prob=re.compile(r'如果|可能|也许|也许会|目前|暂缓|尚且|不确定|是否|恐怕|或许|难以')
     match_prob=pattern_prob.search(sentence)
     if match_prob ==None:
-        pattern = re.compile(r"(得利于|受助于|得益于|受益于|由于|因(?<!子)|出于|源于)(.+)$")
+        pattern = re.compile(r"(得利于|受助于|得益于|起因于|缘于|受益于|由于|因(?<!子)|出于|源于)(.+)$")
         match = pattern.search(sentence)
         if match and re.search('(.+)(，)(.+)', match.group(2))  :
             extra = re.search('(.+)(，)(.+)', match.group(2))
@@ -262,7 +262,7 @@ def rule_5(sentence, remove_word_dict):
                 rule='rule5'
                 is_done = True
     if match_prob !=None:
-        pattern = re.compile(r"(得利于|受助于|得益于|受益于|由于|因(?<!子)|出于|源于)(.+)$")
+        pattern = re.compile(r"(得利于|受助于|得益于|起因于|受益于|缘于|由于|因(?<!子)|出于|源于)(.+)$")
         match = pattern.search(sentence)
         if match and re.search('(.+)(，)(.+)', match.group(2)) :
             extra = re.search('(.+)(，)(.+)', match.group(2))
