@@ -341,5 +341,3 @@ with open('jiangchao.txt',encoding='utf-8') as f:
 postagger.release()
 segmentor.release()  # 释放模型
 parser.release()
-print('test')
-print('21313131')
