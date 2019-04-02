@@ -56,7 +56,7 @@ def rule_1(sentence, remove_word_dict):
     connective = None
     prob='Unknown'
     rule='none'
-    pattern_prob=re.compile(r'可能|也许|也许会|目前|暂缓|尚且|不确定|是否|恐怕|或许|难以')
+    pattern_prob=re.compile(r'如果|可能|也许|也许会|目前|暂缓|尚且|不确定|是否|恐怕|或许|难以')
     match_prob=pattern_prob.search(sentence)
     if match_prob == None:
         pattern = re.compile(r"(因|因为|由|由于|通过|因而|出于)(.+)(因此|导致|引起|使得|造成|引发|招致|致使|让)(.+)$")
@@ -102,7 +102,7 @@ def rule_2(sentence, remove_word_dict):
     connective = None
     prob = 'Unknown'
     rule='Unknown'
-    pattern_prob=re.compile(r'可能|也许|也许会|目前|暂缓|尚且|不确定|是否|恐怕|或许|难以')
+    pattern_prob=re.compile(r'如果|可能|也许|也许会|目前|暂缓|尚且|不确定|是否|恐怕|或许|难以')
     match_prob=pattern_prob.search(sentence)
     if match_prob == None:
         pattern = re.compile(r"(.+)(未|没有|不足以)(导致|引起|使得|造成|引发|招致|致使)(.+)$")
@@ -148,10 +148,10 @@ def rule_3(sentence, remove_word_dict):
     connective = None
     prob = 'Unknown'
     rule='Unkown'
-    pattern_prob=re.compile(r'可能|也许|也许会|目前|暂缓|尚且|不确定|是否|恐怕|或许|难以')
+    pattern_prob=re.compile(r'如果|可能|也许|也许会|目前|暂缓|尚且|不确定|是否|恐怕|或许|难以')
     match_prob=pattern_prob.search(sentence)
     if match_prob == None:
-        pattern = re.compile(r"(.+)(产生|原因在于|原因|离不开|导致|引起|使得|(?<!缔|制|改|打|塑)造成|引发|招致|致使)(.+)$")
+        pattern = re.compile(r"(.+)(产生|原因在于|意味着|原因|离不开|导致|引起|使得|(?<!缔|制|改|打|塑)造成|引发|招致|致使)(.+)$")
         match = pattern.search(sentence)
         if match and match.lastindex >= 3:
             cause = match.group(1)
@@ -168,7 +168,7 @@ def rule_3(sentence, remove_word_dict):
                 rule='rule3'
                 is_done = True
     if match_prob != None:
-        pattern = re.compile(r"(.+)(产生|原因在于|原因|离不开|导致|引起|使得|(?<!缔|制|改|打|塑)造成|引发|招致|致使)(.+)$")
+        pattern = re.compile(r"(.+)(产生|原因在于|意味着|原因|离不开|导致|引起|使得|(?<!缔|制|改|打|塑)造成|引发|招致|致使)(.+)$")
         match = pattern.search(sentence)
         if match and match.lastindex >= 3:
             cause = match.group(1)
@@ -194,7 +194,7 @@ def rule_4(sentence, remove_word_dict):
     connective = None
     prob = 'Unknown'
     rule='Unknown'
-    pattern_prob=re.compile(r'可能|也许|也许会|目前|暂缓|尚且|不确定|是否|恐怕|或许|难以')
+    pattern_prob=re.compile(r'如果|可能|也许|也许会|目前|暂缓|尚且|不确定|是否|恐怕|或许|难以')
     match_prob=pattern_prob.search(sentence)
     if match_prob ==None:
         pattern = re.compile(r"(.+)是(导致|引起|使得|造成|引发|招致|致使)(.+)的(.*)(原因|因素)$")
@@ -241,10 +241,10 @@ def rule_5(sentence, remove_word_dict):
     connective = None
     prob = 'Unknown'
     rule='Unknown'
-    pattern_prob=re.compile(r'可能|也许|也许会|目前|暂缓|尚且|不确定|是否|恐怕|或许|难以')
+    pattern_prob=re.compile(r'如果|可能|也许|也许会|目前|暂缓|尚且|不确定|是否|恐怕|或许|难以')
     match_prob=pattern_prob.search(sentence)
     if match_prob ==None:
-        pattern = re.compile(r"(得利于|受助于|得益于|受益于|因(?<!子|素)|出于)(.+)$")
+        pattern = re.compile(r"(得利于|受助于|得益于|受益于|由于|因(?<!子)|出于|源于)(.+)$")
         match = pattern.search(sentence)
         if match and re.search('(.+)(，)(.+)', match.group(2))  :
             extra = re.search('(.+)(，)(.+)', match.group(2))
@@ -262,7 +262,7 @@ def rule_5(sentence, remove_word_dict):
                 rule='rule5'
                 is_done = True
     if match_prob !=None:
-        pattern = re.compile(r"(得利于|受助于|得益于|受益于|因(?<!子|素)|出于)(.+)$")
+        pattern = re.compile(r"(得利于|受助于|得益于|受益于|由于|因(?<!子)|出于|源于)(.+)$")
         match = pattern.search(sentence)
         if match and re.search('(.+)(，)(.+)', match.group(2)) :
             extra = re.search('(.+)(，)(.+)', match.group(2))
